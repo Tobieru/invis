@@ -61,14 +61,6 @@ jobs:
             exit 0
           } 2>&1 | tee deobf_debug/02_moonsec_run.log
 
-      - name: Install LuaDec build dependencies
-        continue-on-error: true
-        run: |
-          set +e
-          sudo apt-get update
-          sudo apt-get install -y libreadline-dev libncurses-dev
-          echo "apt_exit=$?"
-
       - name: Build Lua 5.1 and LuaDec without submodules
         continue-on-error: true
         run: |
@@ -88,7 +80,7 @@ jobs:
             fi
             if [ $RC -eq 0 ]; then
               echo '=== Lua 5.1 build ==='
-              cd /tmp/luadec/lua-5.1 && make linux
+              cd /tmp/luadec/lua-5.1/src && make generic
               RC=$?
               echo "lua51_build_exit=$RC"
             fi
