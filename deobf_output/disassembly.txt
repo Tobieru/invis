@@ -1,5 +1,5 @@
 -- Disassembled with MoonSec V3 deobfuscator by #tupsutumppu
-function func_4d47bd76(...)
+function func_1f0bcf66(...)
 	[Slots: 13, Upvalues: 0, Constants: 19]
 	[   0]	   GetGlobal	|    0 |    0 |    0 |	R0 = _G
 	[   1]	    GetTable	|    0 |    0 |  257 |	R0 = R0["a"]
@@ -31,13 +31,13 @@ function func_4d47bd76(...)
 	[  27]	     LoadNil	|    1 |    4 |    0 |	R1->R4 = nil
 	[  28]	    LoadBool	|    5 |    0 |    0 |	R5 = false
 	[  29]	    NewTable	|    6 |    0 |    0 |	R6 = {}
-	[  30]	     Closure	|    7 |    0 |    5 |	R7 = func_385a91ef
+	[  30]	     Closure	|    7 |    0 |    5 |	R7 = func_2f37f271
 	[  31]	        Move	|    0 |    2 |    0 |	R0 = R2
 	[  32]	        Move	|    0 |    0 |    0 |	R0 = R0
 	[  33]	        Move	|    0 |    3 |    0 |	R0 = R3
 	[  34]	        Move	|    0 |    4 |    0 |	R0 = R4
 	[  35]	        Move	|    0 |    6 |    0 |	R0 = R6
-	[  36]	     Closure	|    8 |    3 |    2 |	R8 = func_fa58dcd4
+	[  36]	     Closure	|    8 |    3 |    2 |	R8 = func_91b7e6a6
 	[  37]	        Move	|    0 |    5 |    0 |	R0 = R5
 	[  38]	        Move	|    0 |    6 |    0 |	R0 = R6
 	[  39]	        Move	|    9 |    7 |    0 |	R9 = R7
@@ -51,7 +51,7 @@ function func_4d47bd76(...)
 	[  47]	        Call	|   10 |    2 |    2 |	R10 = R10(R11)
 	[  48]	    GetTable	|   10 |   10 |  267 |	R10 = R10["KeyDown"]
 	[  49]	        Self	|   10 |   10 |  268 |	R11 = R10; R10 = R10["Connect"]
-	[  50]	     Closure	|   12 |    2 |    2 |	R12 = func_7ef2359b
+	[  50]	     Closure	|   12 |    2 |    2 |	R12 = func_b23e83c5
 	[  51]	        Move	|    0 |    5 |    0 |	R0 = R5
 	[  52]	        Move	|    0 |    6 |    0 |	R0 = R6
 	[  53]	        Call	|   10 |    3 |    2 |	R10 = R10(R11, R12)
@@ -62,7 +62,7 @@ function func_4d47bd76(...)
 	[  58]	        Call	|   10 |    3 |    2 |	R10 = R10(R11, R12)
 	[  59]	    GetTable	|   10 |   10 |  272 |	R10 = R10["Heartbeat"]
 	[  60]	        Self	|   10 |   10 |  268 |	R11 = R10; R10 = R10["Connect"]
-	[  61]	     Closure	|   12 |    4 |    3 |	R12 = func_251130e2
+	[  61]	     Closure	|   12 |    4 |    3 |	R12 = func_57bdcd45
 	[  62]	        Move	|    0 |    5 |    0 |	R0 = R5
 	[  63]	        Move	|    0 |    4 |    0 |	R0 = R4
 	[  64]	        Move	|    0 |    3 |    0 |	R0 = R3
@@ -70,7 +70,7 @@ function func_4d47bd76(...)
 	[  66]	    SetTable	|    9 |  273 |   10 |	R9[2] = R10
 	[  67]	    GetTable	|   10 |    0 |  274 |	R10 = R0["CharacterAdded"]
 	[  68]	        Self	|   10 |   10 |  268 |	R11 = R10; R10 = R10["Connect"]
-	[  69]	     Closure	|   12 |    1 |    3 |	R12 = func_e39bb738
+	[  69]	     Closure	|   12 |    1 |    3 |	R12 = func_4aff4ecc
 	[  70]	        Move	|    0 |    5 |    0 |	R0 = R5
 	[  71]	        Move	|    0 |    7 |    0 |	R0 = R7
 	[  72]	        Move	|    0 |    8 |    0 |	R0 = R8
@@ -79,7 +79,7 @@ function func_4d47bd76(...)
 	[  75]	    SetTable	|   10 |  257 |    9 |	R10["a"] = R9
 	[  76]	      Return	|    0 |    1 |    0 |	return
 end
-function func_385a91ef()
+function func_2f37f271()
 	[Slots: 8, Upvalues: 5, Constants: 13]
 	[   0]	    GetUpval	|    0 |    1 |    0 |	R0 = UPVALUE_1
 	[   1]	    GetTable	|    0 |    0 |  256 |	R0 = R0["Character"]
@@ -125,7 +125,7 @@ function func_385a91ef()
 	[  41]	         Jmp	|    0 |  -15 |    0 |	PC += -15
 	[  42]	      Return	|    0 |    1 |    0 |	return
 end
-function func_e39bb738()
+function func_4aff4ecc()
 	[Slots: 1, Upvalues: 3, Constants: 0]
 	[   0]	    LoadBool	|    0 |    0 |    0 |	R0 = false
 	[   1]	    SetUpval	|    0 |    0 |    0 |	UPVALUE_0 = R0
@@ -135,7 +135,7 @@ function func_e39bb738()
 	[   5]	        Call	|    0 |    1 |    1 |	R0()
 	[   6]	      Return	|    0 |    1 |    0 |	return
 end
-function func_7ef2359b(R0)
+function func_b23e83c5(R0)
 	[Slots: 7, Upvalues: 2, Constants: 5]
 	[   0]	          Eq	|    0 |    0 |  256 |	if R0 == "g" then PC += 1
 	[   1]	         Jmp	|    0 |   17 |    0 |	PC += 17
@@ -158,7 +158,7 @@ function func_7ef2359b(R0)
 	[  18]	         Jmp	|    0 |  -10 |    0 |	PC += -10
 	[  19]	      Return	|    0 |    1 |    0 |	return
 end
-function func_fa58dcd4()
+function func_91b7e6a6()
 	[Slots: 8, Upvalues: 2, Constants: 30]
 	[   0]	   GetGlobal	|    0 |    0 |    0 |	R0 = Instance
 	[   1]	    GetTable	|    0 |    0 |  257 |	R0 = R0["new"]
@@ -204,7 +204,7 @@ function func_fa58dcd4()
 	[  41]	     LoadNil	|    3 |    4 |    0 |	R3->R4 = nil
 	[  42]	    GetTable	|    5 |    1 |  281 |	R5 = R1["InputBegan"]
 	[  43]	        Self	|    5 |    5 |  282 |	R6 = R5; R5 = R5["Connect"]
-	[  44]	     Closure	|    7 |    3 |    4 |	R7 = func_9826e793
+	[  44]	     Closure	|    7 |    3 |    4 |	R7 = func_dd464702
 	[  45]	        Move	|    0 |    2 |    0 |	R0 = R2
 	[  46]	        Move	|    0 |    3 |    0 |	R0 = R3
 	[  47]	        Move	|    0 |    4 |    0 |	R0 = R4
@@ -212,7 +212,7 @@ function func_fa58dcd4()
 	[  49]	        Call	|    5 |    3 |    1 |	R5(R6, R7)
 	[  50]	    GetTable	|    5 |    1 |  283 |	R5 = R1["InputChanged"]
 	[  51]	        Self	|    5 |    5 |  282 |	R6 = R5; R5 = R5["Connect"]
-	[  52]	     Closure	|    7 |    2 |    4 |	R7 = func_27748850
+	[  52]	     Closure	|    7 |    2 |    4 |	R7 = func_171ecf88
 	[  53]	        Move	|    0 |    2 |    0 |	R0 = R2
 	[  54]	        Move	|    0 |    3 |    0 |	R0 = R3
 	[  55]	        Move	|    0 |    1 |    0 |	R0 = R1
@@ -220,18 +220,18 @@ function func_fa58dcd4()
 	[  57]	        Call	|    5 |    3 |    1 |	R5(R6, R7)
 	[  58]	    GetTable	|    5 |    1 |  284 |	R5 = R1["InputEnded"]
 	[  59]	        Self	|    5 |    5 |  282 |	R6 = R5; R5 = R5["Connect"]
-	[  60]	     Closure	|    7 |    1 |    1 |	R7 = func_febd2d2b
+	[  60]	     Closure	|    7 |    1 |    1 |	R7 = func_9f3cd8db
 	[  61]	        Move	|    0 |    2 |    0 |	R0 = R2
 	[  62]	        Call	|    5 |    3 |    1 |	R5(R6, R7)
 	[  63]	    GetTable	|    5 |    1 |  285 |	R5 = R1["MouseButton1Click"]
 	[  64]	        Self	|    5 |    5 |  282 |	R6 = R5; R5 = R5["Connect"]
-	[  65]	     Closure	|    7 |    0 |    2 |	R7 = func_567ec994
+	[  65]	     Closure	|    7 |    0 |    2 |	R7 = func_a2ded9ac
 	[  66]	    GetUpval	|    0 |    0 |    0 |	R0 = UPVALUE_0
 	[  67]	    GetUpval	|    0 |    1 |    0 |	R0 = UPVALUE_1
 	[  68]	        Call	|    5 |    3 |    1 |	R5(R6, R7)
 	[  69]	      Return	|    0 |    1 |    0 |	return
 end
-function func_567ec994()
+function func_a2ded9ac()
 	[Slots: 6, Upvalues: 2, Constants: 4]
 	[   0]	    GetUpval	|    0 |    0 |    0 |	R0 = UPVALUE_0
 	[   1]	         Not	|    0 |    0 |    0 |	R0 = not R0
@@ -252,7 +252,7 @@ function func_567ec994()
 	[  16]	         Jmp	|    0 |  -10 |    0 |	PC += -10
 	[  17]	      Return	|    0 |    1 |    0 |	return
 end
-function func_febd2d2b(R0)
+function func_9f3cd8db(R0)
 	[Slots: 3, Upvalues: 1, Constants: 3]
 	[   0]	    GetTable	|    1 |    0 |  256 |	R1 = R0["UserInputType"]
 	[   1]	   GetGlobal	|    2 |    1 |    0 |	R2 = Enum
@@ -264,7 +264,7 @@ function func_febd2d2b(R0)
 	[   7]	    SetUpval	|    1 |    0 |    0 |	UPVALUE_0 = R1
 	[   8]	      Return	|    0 |    1 |    0 |	return
 end
-function func_27748850(R0)
+function func_171ecf88(R0)
 	[Slots: 9, Upvalues: 4, Constants: 10]
 	[   0]	    GetTable	|    1 |    0 |  256 |	R1 = R0["UserInputType"]
 	[   1]	   GetGlobal	|    2 |    1 |    0 |	R2 = Enum
@@ -301,7 +301,7 @@ function func_27748850(R0)
 	[  32]	    SetTable	|    2 |  259 |    3 |	R2["Position"] = R3
 	[  33]	      Return	|    0 |    1 |    0 |	return
 end
-function func_9826e793(R0)
+function func_dd464702(R0)
 	[Slots: 3, Upvalues: 4, Constants: 4]
 	[   0]	    GetTable	|    1 |    0 |  256 |	R1 = R0["UserInputType"]
 	[   1]	   GetGlobal	|    2 |    1 |    0 |	R2 = Enum
@@ -318,7 +318,7 @@ function func_9826e793(R0)
 	[  12]	    SetUpval	|    1 |    2 |    0 |	UPVALUE_2 = R1
 	[  13]	      Return	|    0 |    1 |    0 |	return
 end
-function func_251130e2()
+function func_57bdcd45()
 	[Slots: 9, Upvalues: 3, Constants: 12]
 	[   0]	    GetUpval	|    0 |    0 |    0 |	R0 = UPVALUE_0
 	[   1]	        Test	|    0 |    0 |    0 |	if not R0 then PC += 1

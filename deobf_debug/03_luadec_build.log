@@ -5,34 +5,32 @@ luadec_clone_exit=0
 Cloning into '/tmp/luadec/lua-5.1'...
 lua51_clone_exit=0
 === Lua 5.1 build ===
-cd src && make linux
+make all MYCFLAGS=
 make[1]: Entering directory '/tmp/luadec/lua-5.1/src'
-make all MYCFLAGS=-DLUA_USE_LINUX MYLIBS="-Wl,-E -ldl -lreadline -lhistory -lncurses"
-make[2]: Entering directory '/tmp/luadec/lua-5.1/src'
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o lapi.o lapi.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o lcode.o lcode.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o ldebug.o ldebug.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o ldo.o ldo.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o ldump.o ldump.c
+gcc -O2 -Wall    -c -o lapi.o lapi.c
+gcc -O2 -Wall    -c -o lcode.o lcode.c
+gcc -O2 -Wall    -c -o ldebug.o ldebug.c
+gcc -O2 -Wall    -c -o ldo.o ldo.c
+gcc -O2 -Wall    -c -o ldump.o ldump.c
 ldump.c: In function ‘DumpString’:
 ldump.c:63:26: warning: the comparison will always evaluate as ‘false’ for the pointer operand in ‘s + 24’ must not be NULL [-Waddress]
    63 |  if (s==NULL || getstr(s)==NULL)
       |                          ^~
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o lfunc.o lfunc.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o lgc.o lgc.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o llex.o llex.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o lmem.o lmem.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o lobject.o lobject.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o lopcodes.o lopcodes.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o lparser.o lparser.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o lstate.o lstate.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o lstring.o lstring.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o ltable.o ltable.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o ltm.o ltm.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o lundump.o lundump.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o lvm.o lvm.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o lzio.o lzio.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o lauxlib.o lauxlib.c
+gcc -O2 -Wall    -c -o lfunc.o lfunc.c
+gcc -O2 -Wall    -c -o lgc.o lgc.c
+gcc -O2 -Wall    -c -o llex.o llex.c
+gcc -O2 -Wall    -c -o lmem.o lmem.c
+gcc -O2 -Wall    -c -o lobject.o lobject.c
+gcc -O2 -Wall    -c -o lopcodes.o lopcodes.c
+gcc -O2 -Wall    -c -o lparser.o lparser.c
+gcc -O2 -Wall    -c -o lstate.o lstate.c
+gcc -O2 -Wall    -c -o lstring.o lstring.c
+gcc -O2 -Wall    -c -o ltable.o ltable.c
+gcc -O2 -Wall    -c -o ltm.o ltm.c
+gcc -O2 -Wall    -c -o lundump.o lundump.c
+gcc -O2 -Wall    -c -o lvm.o lvm.c
+gcc -O2 -Wall    -c -o lzio.o lzio.c
+gcc -O2 -Wall    -c -o lauxlib.o lauxlib.c
 lauxlib.c: In function ‘luaL_loadfile’:
 lauxlib.c:577:4: warning: this ‘while’ clause does not guard... [-Wmisleading-indentation]
   577 |    while ((c = getc(lf.f)) != EOF && c != LUA_SIGNATURE[0]) ;
@@ -40,12 +38,12 @@ lauxlib.c:577:4: warning: this ‘while’ clause does not guard... [-Wmisleadin
 lauxlib.c:578:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘while’
   578 |     lf.extraline = 0;
       |     ^~
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o lbaselib.o lbaselib.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o ldblib.o ldblib.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o liolib.o liolib.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o lmathlib.o lmathlib.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o loslib.o loslib.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o ltablib.o ltablib.c
+gcc -O2 -Wall    -c -o lbaselib.o lbaselib.c
+gcc -O2 -Wall    -c -o ldblib.o ldblib.c
+gcc -O2 -Wall    -c -o liolib.o liolib.c
+gcc -O2 -Wall    -c -o lmathlib.o lmathlib.c
+gcc -O2 -Wall    -c -o loslib.o loslib.c
+gcc -O2 -Wall    -c -o ltablib.o ltablib.c
 ltablib.c: In function ‘addfield’:
 ltablib.c:137:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
   137 |   if (!lua_isstring(L, -1))
@@ -53,22 +51,305 @@ ltablib.c:137:3: warning: this ‘if’ clause does not guard... [-Wmisleading-i
 ltablib.c:140:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
   140 |     luaL_addvalue(b);
       |     ^~~~~~~~~~~~~
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o lstrlib.o lstrlib.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o loadlib.o loadlib.c
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o linit.o linit.c
+gcc -O2 -Wall    -c -o lstrlib.o lstrlib.c
+gcc -O2 -Wall    -c -o loadlib.o loadlib.c
+gcc -O2 -Wall    -c -o linit.o linit.c
 ar rcu liblua.a lapi.o lcode.o ldebug.o ldo.o ldump.o lfunc.o lgc.o llex.o lmem.o lobject.o lopcodes.o lparser.o lstate.o lstring.o ltable.o ltm.o lundump.o lvm.o lzio.o lauxlib.o lbaselib.o ldblib.o liolib.o lmathlib.o loslib.o ltablib.o lstrlib.o loadlib.o linit.o	# DLL needs all object files
 ar: `u' modifier ignored since `D' is the default (see `U')
 ranlib liblua.a
-gcc -O2 -Wall -DLUA_USE_LINUX   -c -o lua.o lua.c
-In file included from lua.h:16,
-                 from lua.c:15:
-luaconf.h:275:10: fatal error: readline/readline.h: No such file or directory
-  275 | #include <readline/readline.h>
-      |          ^~~~~~~~~~~~~~~~~~~~~
-compilation terminated.
-make[2]: *** [<builtin>: lua.o] Error 1
-make[2]: Leaving directory '/tmp/luadec/lua-5.1/src'
-make[1]: *** [Makefile:99: linux] Error 2
+gcc -O2 -Wall    -c -o lua.o lua.c
+gcc -o lua  lua.o liblua.a -lm 
+/usr/bin/ld: liblua.a(loslib.o): in function `os_tmpname':
+loslib.c:(.text+0x2c4): warning: the use of `tmpnam' is dangerous, better use `mkstemp'
+gcc -O2 -Wall    -c -o luac.o luac.c
+gcc -O2 -Wall    -c -o print.o print.c
+gcc -o luac  luac.o print.o liblua.a -lm 
 make[1]: Leaving directory '/tmp/luadec/lua-5.1/src'
-make: *** [Makefile:56: linux] Error 2
-lua51_build_exit=2
+lua51_build_exit=0
+=== LuaDec build ===
+gcc -O2 -Wall -DSRCVERSION=\"895d923\" -I../lua-5.1/src    -c -o guess.o guess.c
+guess.c: In function ‘luaU_guess_locals’:
+guess.c:152:17: warning: enumeration value ‘OP_LOADK’ not handled in switch [-Wswitch]
+  152 |                 switch (o) {
+      |                 ^~~~~~
+guess.c:152:17: warning: enumeration value ‘OP_LOADBOOL’ not handled in switch [-Wswitch]
+guess.c:152:17: warning: enumeration value ‘OP_LOADNIL’ not handled in switch [-Wswitch]
+guess.c:152:17: warning: enumeration value ‘OP_GETUPVAL’ not handled in switch [-Wswitch]
+guess.c:152:17: warning: enumeration value ‘OP_GETGLOBAL’ not handled in switch [-Wswitch]
+guess.c:152:17: warning: enumeration value ‘OP_NEWTABLE’ not handled in switch [-Wswitch]
+guess.c:152:17: warning: enumeration value ‘OP_CONCAT’ not handled in switch [-Wswitch]
+guess.c:152:17: warning: enumeration value ‘OP_JMP’ not handled in switch [-Wswitch]
+guess.c:152:17: warning: enumeration value ‘OP_TEST’ not handled in switch [-Wswitch]
+guess.c:152:17: warning: enumeration value ‘OP_CALL’ not handled in switch [-Wswitch]
+guess.c:152:17: warning: enumeration value ‘OP_TAILCALL’ not handled in switch [-Wswitch]
+guess.c:152:17: warning: enumeration value ‘OP_FORLOOP’ not handled in switch [-Wswitch]
+guess.c:152:17: warning: enumeration value ‘OP_FORPREP’ not handled in switch [-Wswitch]
+guess.c:152:17: warning: enumeration value ‘OP_TFORLOOP’ not handled in switch [-Wswitch]
+guess.c:152:17: warning: enumeration value ‘OP_SETLIST’ not handled in switch [-Wswitch]
+guess.c:152:17: warning: enumeration value ‘OP_CLOSE’ not handled in switch [-Wswitch]
+guess.c:152:17: warning: enumeration value ‘OP_CLOSURE’ not handled in switch [-Wswitch]
+guess.c:152:17: warning: enumeration value ‘OP_VARARG’ not handled in switch [-Wswitch]
+guess.c:216:21: warning: unused variable ‘bc’ [-Wunused-variable]
+  216 |                 int bc = GETARG_Bx(instr);
+      |                     ^~
+guess.c:574:53: warning: ‘%d’ directive writing between 1 and 10 bytes into a region of size between 0 and 6 [-Wformat-overflow=]
+  574 |                                 sprintf(names,"l_%d_%d",main,i);
+      |                                                     ^~
+guess.c:574:47: note: directive argument in the range [0, 2147483646]
+  574 |                                 sprintf(names,"l_%d_%d",main,i);
+      |                                               ^~~~~~~~~
+In file included from /usr/include/stdio.h:980,
+                 from guess.c:3:
+In function ‘sprintf’,
+    inlined from ‘luaU_guess_locals’ at guess.c:574:5:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:10: note: ‘__builtin___sprintf_chk’ output between 6 and 25 bytes into a destination of size 10
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+gcc -O2 -Wall -DSRCVERSION=\"895d923\" -I../lua-5.1/src    -c -o luadec.o luadec.c
+gcc -O2 -Wall -DSRCVERSION=\"895d923\" -I../lua-5.1/src    -c -o decompile.o decompile.c
+decompile.c: In function ‘FixLocalNames’:
+decompile.c:54:28: warning: operation on ‘f->locvars’ may be undefined [-Wsequence-point]
+   54 |                 f->locvars = luaM_reallocvector(glstate, f->locvars, f->sizelocvars, f->numparams + need_arg, LocVar);
+decompile.c: In function ‘MakeBoolean’:
+decompile.c:458:43: warning: variable ‘savecurr’ set but not used [-Wunused-but-set-variable]
+  458 |                                 LogicExp* savecurr;
+      |                                           ^~~~~~~~
+decompile.c: In function ‘RawAddAstStatement’:
+decompile.c:606:29: warning: unused variable ‘blockSize’ [-Wunused-variable]
+  606 |                         int blockSize = block->sub->size;
+      |                             ^~~~~~~~~
+decompile.c:591:31: warning: unused variable ‘tail’ [-Wunused-variable]
+  591 |                 AstStatement* tail = cast(AstStatement*, block->sub->tail);
+      |                               ^~~~
+decompile.c: In function ‘FlushBoolean’:
+decompile.c:666:29: warning: unused variable ‘whileStart’ [-Wunused-variable]
+  666 |                         int whileStart = walk->start;
+      |                             ^~~~~~~~~~
+decompile.c: In function ‘DeclareLocals’:
+decompile.c:1220:13: warning: variable ‘loopconvert’ set but not used [-Wunused-but-set-variable]
+ 1220 |         int loopconvert;
+      |             ^~~~~~~~~~~
+decompile.c: In function ‘MakeIndex’:
+decompile.c:1432:25: warning: enumeration value ‘SQUARE_BRACKET’ not handled in switch [-Wswitch]
+ 1432 |                         switch (type) {
+      |                         ^~~~~~
+decompile.c: In function ‘PrintLoopTree’:
+decompile.c:1702:32: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 4 has type ‘LoopItem *’ {aka ‘struct LoopItem_ *’} [-Wformat=]
+ 1702 |         fprintf(stderr, "%s=0x%x prep=%d start=%d body=%d end=%d out=%d block=0x%x \n"
+      |                               ~^
+      |                                |
+      |                                unsigned int
+ 1703 |                 ,stmttype[li->type], li, li->prep, li->start, li->body, li->end, li->out, li->block);
+      |                                      ~~
+      |                                      |
+      |                                      LoopItem * {aka struct LoopItem_ *}
+decompile.c:1702:82: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 10 has type ‘AstStatement *’ {aka ‘struct AstStatement_ *’} [-Wformat=]
+ 1702 |         fprintf(stderr, "%s=0x%x prep=%d start=%d body=%d end=%d out=%d block=0x%x \n"
+      |                                                                                 ~^
+      |                                                                                  |
+      |                                                                                  unsigned int
+ 1703 |                 ,stmttype[li->type], li, li->prep, li->start, li->body, li->end, li->out, li->block);
+      |                                                                                           ~~~~~~~~~
+      |                                                                                             |
+      |                                                                                             AstStatement * {aka struct AstStatement_ *}
+decompile.c: In function ‘ProcessCode’:
+decompile.c:1836:21: warning: unused variable ‘func_check_result’ [-Wunused-variable]
+ 1836 |                 int func_check_result = FunctionCheck(f, funcnumstr, str);
+      |                     ^~~~~~~~~~~~~~~~~
+decompile.c:2211:51: warning: unused variable ‘endif’ [-Wunused-variable]
+ 2211 |                                 int thenaddr = 0, endif = 0;
+      |                                                   ^~~~~
+decompile.c:2532:67: warning: variable ‘state’ set but not used [-Wunused-but-set-variable]
+ 2532 |                                 const char *generator, *control, *state;
+      |                                                                   ^~~~~
+decompile.c:2532:57: warning: variable ‘control’ set but not used [-Wunused-but-set-variable]
+ 2532 |                                 const char *generator, *control, *state;
+      |                                                         ^~~~~~~
+decompile.c:2614:51: warning: unused variable ‘endif’ [-Wunused-variable]
+ 2614 |                                 int thenaddr = 0, endif = 0;
+      |                                                   ^~~~~
+decompile.c:2755:47: warning: unused variable ‘parentStmt’ [-Wunused-variable]
+ 2755 |                                 AstStatement* parentStmt = NULL;
+      |                                               ^~~~~~~~~~
+decompile.c:2941:37: warning: variable ‘stepLen’ set but not used [-Wunused-but-set-variable]
+ 2941 |                                 int stepLen;
+      |                                     ^~~~~~~
+decompile.c:2940:63: warning: variable ‘endstr’ set but not used [-Wunused-but-set-variable]
+ 2940 |                                 const char *initial, *a1str, *endstr;
+      |                                                               ^~~~~~
+decompile.c:3049:29: warning: unused variable ‘cfnum’ [-Wunused-variable]
+ 3049 |                         int cfnum = functionnum;
+      |                             ^~~~~
+decompile.c:1792:13: warning: unused variable ‘baseIndent’ [-Wunused-variable]
+ 1792 |         int baseIndent = indent;
+      |             ^~~~~~~~~~
+decompile.c: In function ‘MakeIndex’:
+decompile.c:1447:32: warning: ‘ret’ may be used uninitialized [-Wmaybe-uninitialized]
+ 1447 |                         return ret;
+      |                                ^~~
+decompile.c:1420:13: note: ‘ret’ was declared here
+ 1420 |         int ret;
+      |             ^~~
+decompile.c: In function ‘DeclareLocals’:
+decompile.c:87:61: warning: ‘%d’ directive writing between 1 and 10 bytes into a region of size 5 [-Wformat-overflow=]
+   87 |                 sprintf(unknown_local, "ERROR_unknown_local_%d", i);
+      |                                                             ^~
+In function ‘getLocalName’,
+    inlined from ‘getLocalName’ at decompile.c:82:13,
+    inlined from ‘DeclareLocals’ at decompile.c:1306:5:
+decompile.c:87:40: note: directive argument in the range [0, 2147483646]
+   87 |                 sprintf(unknown_local, "ERROR_unknown_local_%d", i);
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /usr/include/stdio.h:980,
+                 from decompile.c:4:
+In function ‘sprintf’,
+    inlined from ‘getLocalName’ at decompile.c:87:3,
+    inlined from ‘getLocalName’ at decompile.c:82:13,
+    inlined from ‘DeclareLocals’ at decompile.c:1306:5:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:10: note: ‘__builtin___sprintf_chk’ output between 22 and 31 bytes into a destination of size 25
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+decompile.c: In function ‘DeclareLocals’:
+decompile.c:87:61: warning: ‘%d’ directive writing between 1 and 10 bytes into a region of size 5 [-Wformat-overflow=]
+   87 |                 sprintf(unknown_local, "ERROR_unknown_local_%d", i);
+      |                                                             ^~
+In function ‘getLocalName’,
+    inlined from ‘getLocalName’ at decompile.c:82:13,
+    inlined from ‘DeclareLocals’ at decompile.c:1299:5:
+decompile.c:87:40: note: directive argument in the range [0, 2147483646]
+   87 |                 sprintf(unknown_local, "ERROR_unknown_local_%d", i);
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~~
+In function ‘sprintf’,
+    inlined from ‘getLocalName’ at decompile.c:87:3,
+    inlined from ‘getLocalName’ at decompile.c:82:13,
+    inlined from ‘DeclareLocals’ at decompile.c:1299:5:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:10: note: ‘__builtin___sprintf_chk’ output between 22 and 31 bytes into a destination of size 25
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+decompile.c: In function ‘DeclareLocals’:
+decompile.c:87:61: warning: ‘%d’ directive writing between 1 and 10 bytes into a region of size 5 [-Wformat-overflow=]
+   87 |                 sprintf(unknown_local, "ERROR_unknown_local_%d", i);
+      |                                                             ^~
+In function ‘getLocalName’,
+    inlined from ‘getLocalName’ at decompile.c:82:13,
+    inlined from ‘DeclareLocals’ at decompile.c:1310:15:
+decompile.c:87:40: note: directive argument in the range [0, 2147483646]
+   87 |                 sprintf(unknown_local, "ERROR_unknown_local_%d", i);
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~~
+In function ‘sprintf’,
+    inlined from ‘getLocalName’ at decompile.c:87:3,
+    inlined from ‘getLocalName’ at decompile.c:82:13,
+    inlined from ‘DeclareLocals’ at decompile.c:1310:15:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:10: note: ‘__builtin___sprintf_chk’ output between 22 and 31 bytes into a destination of size 25
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+decompile.c: In function ‘DeclareLocals’:
+decompile.c:87:61: warning: ‘%d’ directive writing between 1 and 10 bytes into a region of size 5 [-Wformat-overflow=]
+   87 |                 sprintf(unknown_local, "ERROR_unknown_local_%d", i);
+      |                                                             ^~
+In function ‘getLocalName’,
+    inlined from ‘getLocalName’ at decompile.c:82:13,
+    inlined from ‘DeclareLocals’ at decompile.c:1287:16:
+decompile.c:87:40: note: directive argument in the range [0, 2147483646]
+   87 |                 sprintf(unknown_local, "ERROR_unknown_local_%d", i);
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~~
+In function ‘sprintf’,
+    inlined from ‘getLocalName’ at decompile.c:87:3,
+    inlined from ‘getLocalName’ at decompile.c:82:13,
+    inlined from ‘DeclareLocals’ at decompile.c:1287:16:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:10: note: ‘__builtin___sprintf_chk’ output between 22 and 31 bytes into a destination of size 25
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+gcc -O2 -Wall -DSRCVERSION=\"895d923\" -I../lua-5.1/src    -c -o disassemble.o disassemble.c
+disassemble.c: In function ‘luadec_disassemble’:
+disassemble.c:80:30: warning: zero-length gnu_printf format string [-Wformat-zero-length]
+   80 |                 sprintf(line,"");
+      |                              ^~
+disassemble.c:321:45: warning: zero-length gnu_printf format string [-Wformat-zero-length]
+  321 |                                 sprintf(tmp,"");
+      |                                             ^~
+disassemble.c:331:46: warning: zero-length gnu_printf format string [-Wformat-zero-length]
+  331 |                                 sprintf(tmp2,"");
+      |                                              ^~
+disassemble.c:345:46: warning: zero-length gnu_printf format string [-Wformat-zero-length]
+  345 |                                 sprintf(tmp, "");
+      |                                              ^~
+disassemble.c:391:29: warning: unused variable ‘next_is_extraarg’ [-Wunused-variable]
+  391 |                         int next_is_extraarg = 1;
+      |                             ^~~~~~~~~~~~~~~~
+gcc -O2 -Wall -DSRCVERSION=\"895d923\" -I../lua-5.1/src    -c -o proto.o proto.c
+proto.c: In function ‘convertToUpper’:
+proto.c:84:16: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+   84 |         while (*p++ = toupper(*p));
+      |                ^
+proto.c: In function ‘assembleInstruction’:
+proto.c:51:16: warning: ‘i’ may be used uninitialized [-Wmaybe-uninitialized]
+   51 |         return i;
+      |                ^
+proto.c:34:21: note: ‘i’ was declared here
+   34 |         Instruction i;
+      |                     ^
+gcc -O2 -Wall -DSRCVERSION=\"895d923\" -I../lua-5.1/src    -c -o StringBuffer.o StringBuffer.c
+StringBuffer.c: In function ‘StringBuffer_new’:
+StringBuffer.c:31:17: warning: ‘__builtin___strncpy_chk’ specified bound depends on the length of the source argument [-Wstringop-truncation]
+   31 |                 strncpy(self->buffer, data, len+1);
+      |                 ^
+StringBuffer.c:27:27: note: length computed here
+   27 |                 int len = strlen(data);
+      |                           ^~~~~~~~~~~~
+StringBuffer.c: In function ‘StringBuffer_prepend’:
+StringBuffer.c:88:9: warning: ‘__builtin_strncpy’ output truncated before terminating nul copying as many bytes from a string as its length [-Wstringop-truncation]
+   88 |         strncpy(self->buffer, str, len);
+      |         ^
+StringBuffer.c:81:19: note: length computed here
+   81 |         int len = strlen(str);
+      |                   ^~~~~~~~~~~
+gcc -O2 -Wall -DSRCVERSION=\"895d923\" -I../lua-5.1/src    -c -o structs.o structs.c
+gcc -O2 -Wall -DSRCVERSION=\"895d923\" -I../lua-5.1/src    -c -o statement.o statement.c
+statement.c: In function ‘PrintBreakStatement’:
+statement.c:118:46: warning: too many arguments for format [-Wformat-extra-args]
+  118 |                 StringBuffer_addPrintf(buff, "do break end\n", stmt->code);
+      |                                              ^~~~~~~~~~~~~~~~
+statement.c:121:46: warning: too many arguments for format [-Wformat-extra-args]
+  121 |                 StringBuffer_addPrintf(buff, "break\n", stmt->code);
+      |                                              ^~~~~~~~~
+gcc -O2 -Wall -DSRCVERSION=\"895d923\" -I../lua-5.1/src    -c -o macro-array.o macro-array.c
+gcc -O2 -Wall -DSRCVERSION=\"895d923\" -I../lua-5.1/src    -c -o expression.o expression.c
+gcc -o luadec  guess.o luadec.o decompile.o disassemble.o proto.o StringBuffer.o structs.o statement.o macro-array.o expression.o ../lua-5.1/src/liblua.a -lm 
+gcc -O2 -Wall -DSRCVERSION=\"895d923\" -I../lua-5.1/src    -c -o luareplace.o luareplace.c
+luareplace.c: In function ‘checkProto’:
+luareplace.c:178:23: warning: variable ‘stop’ set but not used [-Wunused-but-set-variable]
+  178 |         int diff = 0, stop = 0;
+      |                       ^~~~
+gcc -o luareplace  luareplace.o ../lua-5.1/src/liblua.a -lm 
+../lua-5.1/src/lua ../bin/bin2c.lua ../bin/allopcodes-5.1.lua allopcodes_lua > allopcodes_lua.h
+../lua-5.1/src/luac -o allopcodes.luac ../bin/allopcodes-5.1.lua
+../lua-5.1/src/lua ../bin/bin2c.lua allopcodes.luac allopcodes_luac > allopcodes_luac.h
+gcc -O2 -Wall -DSRCVERSION=\"895d923\" -I../lua-5.1/src    -c -o luaopswap.o luaopswap.c
+luaopswap.c: In function ‘main’:
+luaopswap.c:323:36: warning: pointer targets in initialization of ‘const char *’ from ‘unsigned char *’ differ in signedness [-Wpointer-sign]
+  323 |                 const char* buff = cmp_gen_lua ? allopcodes_lua : allopcodes_luac;
+      |                                    ^~~~~~~~~~~
+gcc -O2 -Wall -DSRCVERSION=\"895d923\" -I../lua-5.1/src    -c -o lundump-5.1.o lundump-5.1.c
+gcc -o luaopswap  luaopswap.o lundump-5.1.o ../lua-5.1/src/liblua.a -lm 
+luadec_build_exit=0

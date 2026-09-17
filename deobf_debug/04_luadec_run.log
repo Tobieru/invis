@@ -1,3 +1,26 @@
-decoded.luac or luadec binary missing; skipping
-decoded_exists=yes
-luadec_exists=no
+cannot find blockend > 76 , pc = 75, f->sizecode = 77
+cannot find blockend > 77 , pc = 76, f->sizecode = 77
+cannot find blockend > 42 , pc = 41, f->sizecode = 43
+cannot find blockend > 43 , pc = 42, f->sizecode = 43
+cannot find blockend > 6 , pc = 5, f->sizecode = 7
+cannot find blockend > 7 , pc = 6, f->sizecode = 7
+cannot find blockend > 19 , pc = 18, f->sizecode = 20
+cannot find blockend > 20 , pc = 19, f->sizecode = 20
+cannot find blockend > 69 , pc = 68, f->sizecode = 70
+cannot find blockend > 70 , pc = 69, f->sizecode = 70
+cannot find blockend > 17 , pc = 16, f->sizecode = 18
+cannot find blockend > 18 , pc = 17, f->sizecode = 18
+cannot find blockend > 8 , pc = 7, f->sizecode = 9
+cannot find blockend > 9 , pc = 8, f->sizecode = 9
+cannot find blockend > 33 , pc = 32, f->sizecode = 34
+cannot find blockend > 34 , pc = 33, f->sizecode = 34
+cannot find blockend > 13 , pc = 12, f->sizecode = 14
+cannot find blockend > 14 , pc = 13, f->sizecode = 14
+cannot find blockend > 37 , pc = 36, f->sizecode = 38
+cannot find blockend > 38 , pc = 37, f->sizecode = 38
+freeLocal<0 in void ReleaseLocals(Function* F)
+ at line 1187 in file decompile.c
+ for lua files: /home/runner/work/invis/invis/deobf_output/decoded.luac
+ at lua function 0 pc=76
+
+luadec_exit=0

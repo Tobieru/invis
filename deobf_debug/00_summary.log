@@ -73,11 +73,16 @@ Learn more:
 Download .NET:
   https://aka.ms/dotnet/download
 === Input ===
--rw-r--r-- 1 runner runner 44K Sep 17 16:14 3Rnd9rHf.txt
+-rw-r--r-- 1 runner runner 44K Sep 17 16:16 3Rnd9rHf.txt
 === Outputs ===
 disassembly.txt 20507 bytes
 decoded.luac.b64 4548 bytes
 decoded.luac 3411 bytes
+deobfuscated.lua 4130 bytes
 === Workspace status ===
-?? deobf_debug/
-?? deobf_output/
+ M deobf_debug/00_summary.log
+ M deobf_debug/01_moonsec_build.log
+ M deobf_debug/03_luadec_build.log
+ M deobf_debug/04_luadec_run.log
+ M deobf_output/disassembly.txt
+?? deobf_output/deobfuscated.lua
