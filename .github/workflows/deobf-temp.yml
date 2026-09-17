@@ -61,6 +61,14 @@ jobs:
             exit 0
           } 2>&1 | tee deobf_debug/02_moonsec_run.log
 
+      - name: Install LuaDec build dependencies
+        continue-on-error: true
+        run: |
+          set +e
+          sudo apt-get update
+          sudo apt-get install -y libreadline-dev libncurses-dev
+          echo "apt_exit=$?"
+
       - name: Build Lua 5.1 and LuaDec without submodules
         continue-on-error: true
         run: |
@@ -73,6 +81,7 @@ jobs:
             echo "luadec_clone_exit=$RC"
             if [ $RC -eq 0 ]; then
               echo '=== Lua 5.1 clone ==='
+              rm -rf /tmp/luadec/lua-5.1
               git clone --depth 1 --branch 5.1 https://github.com/viruscamp/lua5.git /tmp/luadec/lua-5.1
               RC=$?
               echo "lua51_clone_exit=$RC"
