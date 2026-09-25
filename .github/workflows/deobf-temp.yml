@@ -11,7 +11,6 @@ permissions:
 jobs:
   deobfuscate:
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - name: Checkout target
         uses: actions/checkout@v4
@@ -22,110 +21,71 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: Build MoonSec deobfuscator
-        continue-on-error: true
         run: |
-          set +e
-          mkdir -p deobf_debug deobf_output
-          {
-            echo '=== MoonSec clone ==='
-            git clone --depth 1 https://github.com/tupsutumppu/MoonsecDeobfuscator.git /tmp/MoonsecDeobfuscator
-            RC=$?
-            echo "clone_exit=$RC"
-            if [ $RC -eq 0 ]; then
-              echo '=== dotnet build ==='
-              dotnet build /tmp/MoonsecDeobfuscator -c Release
-              RC=$?
-              echo "build_exit=$RC"
-            fi
-            exit 0
-          } 2>&1 | tee deobf_debug/01_moonsec_build.log
+          set -o pipefail
+          rm -rf /tmp/MoonsecDeobfuscator
+          git clone --depth 1 https://github.com/tupsutumppu/MoonsecDeobfuscator.git /tmp/MoonsecDeobfuscator
+          dotnet build /tmp/MoonsecDeobfuscator -c Release 2>&1 | tee build_moonsec.log
 
-      - name: Run MoonSec devirtualizer and disassembler
-        continue-on-error: true
+      - name: Devirtualize with MoonSec
         run: |
-          set +e
-          mkdir -p deobf_debug deobf_output
+          set -o pipefail
+          mkdir -p deobf_output deobf_debug
           {
-            echo '=== MoonSec -dev ==='
+            echo "=== -dev ==="
             dotnet run --project /tmp/MoonsecDeobfuscator -c Release --no-build -- -dev -i "$GITHUB_WORKSPACE/3Rnd9rHf.txt" -o "$GITHUB_WORKSPACE/deobf_output/decoded.luac"
-            DEV_RC=$?
-            echo "dev_exit=$DEV_RC"
-            echo '=== MoonSec -dis ==='
+            echo "dev_exit=$?"
+            echo "=== -dis ==="
             dotnet run --project /tmp/MoonsecDeobfuscator -c Release --no-build -- -dis -i "$GITHUB_WORKSPACE/3Rnd9rHf.txt" -o "$GITHUB_WORKSPACE/deobf_output/disassembly.txt"
-            DIS_RC=$?
-            echo "dis_exit=$DIS_RC"
-            if [ -f "$GITHUB_WORKSPACE/deobf_output/decoded.luac" ]; then
-              base64 -w0 "$GITHUB_WORKSPACE/deobf_output/decoded.luac" > "$GITHUB_WORKSPACE/deobf_output/decoded.luac.b64"
-              wc -c "$GITHUB_WORKSPACE/deobf_output/decoded.luac" "$GITHUB_WORKSPACE/deobf_output/decoded.luac.b64"
-            fi
-            exit 0
+            echo "dis_exit=$?"
+            wc -c "$GITHUB_WORKSPACE/deobf_output/decoded.luac" "$GITHUB_WORKSPACE/deobf_output/disassembly.txt"
           } 2>&1 | tee deobf_debug/02_moonsec_run.log
+          base64 -w 0 deobf_output/decoded.luac > deobf_output/decoded.luac.b64
 
-      - name: Build Lua 5.1 and LuaDec without submodules
-        continue-on-error: true
+      - name: Build Lua 5.1 + luadec without readline
         run: |
-          set +e
+          set -o pipefail
+          rm -rf /tmp/luadec
+          git clone --depth 1 https://github.com/viruscamp/luadec.git /tmp/luadec
+          git clone --depth 1 --branch 5.1 https://github.com/viruscamp/lua5.git /tmp/luadec/lua-5.1
+          cd /tmp/luadec/lua-5.1/src
+          make generic 2>&1 | tee /tmp/lua51_build.log
+          cd ../../luadec
+          make LUAVER=5.1 luadec 2>&1 | tee /tmp/luadec_build.log
+          cp luadec "$GITHUB_WORKSPACE/deobf_output/luadec"
           {
-            echo '=== Luadec clone ==='
-            rm -rf /tmp/luadec
-            git clone --depth 1 https://github.com/viruscamp/luadec.git /tmp/luadec
-            RC=$?
-            echo "luadec_clone_exit=$RC"
-            if [ $RC -eq 0 ]; then
-              echo '=== Lua 5.1 clone ==='
-              rm -rf /tmp/luadec/lua-5.1
-              git clone --depth 1 --branch 5.1 https://github.com/viruscamp/lua5.git /tmp/luadec/lua-5.1
-              RC=$?
-              echo "lua51_clone_exit=$RC"
-            fi
-            if [ $RC -eq 0 ]; then
-              echo '=== Lua 5.1 build ==='
-              cd /tmp/luadec/lua-5.1/src && make generic
-              RC=$?
-              echo "lua51_build_exit=$RC"
-            fi
-            if [ $RC -eq 0 ]; then
-              echo '=== LuaDec build ==='
-              cd /tmp/luadec/luadec && make LUAVER=5.1
-              RC=$?
-              echo "luadec_build_exit=$RC"
-            fi
-            exit 0
-          } 2>&1 | tee deobf_debug/03_luadec_build.log
+            echo "=== lua51 ==="
+            cat /tmp/lua51_build.log
+            echo "=== luadec ==="
+            cat /tmp/luadec_build.log
+          } > "$GITHUB_WORKSPACE/deobf_debug/03_luadec_build.log"
 
-      - name: Decompile decoded bytecode
-        continue-on-error: true
+      - name: Decompile Lua bytecode
         run: |
-          set +e
+          set -o pipefail
+          /tmp/luadec/luadec/luadec deobf_output/decoded.luac > deobf_output/deobfuscated.lua
           {
-            if [ -f "$GITHUB_WORKSPACE/deobf_output/decoded.luac" ] && [ -x /tmp/luadec/luadec/luadec ]; then
-              /tmp/luadec/luadec/luadec "$GITHUB_WORKSPACE/deobf_output/decoded.luac" > "$GITHUB_WORKSPACE/deobf_output/deobfuscated.lua"
-              echo "luadec_exit=$?"
-            else
-              echo 'decoded.luac or luadec binary missing; skipping'
-              echo 'decoded_exists='$(test -f "$GITHUB_WORKSPACE/deobf_output/decoded.luac" && echo yes || echo no)
-              echo 'luadec_exists='$(test -x /tmp/luadec/luadec/luadec && echo yes || echo no)
-            fi
-            exit 0
-          } 2>&1 | tee deobf_debug/04_luadec_run.log
+            echo "decoded_exists=$(test -f deobf_output/decoded.luac && echo yes || echo no)"
+            echo "luadec_exists=$(test -x deobf_output/luadec && echo yes || echo no)"
+            echo "lua_size=$(wc -c < deobf_output/decoded.luac)"
+            echo "lua_source_size=$(wc -c < deobf_output/deobfuscated.lua)"
+          } | tee deobf_debug/04_luadec_run.log
 
-      - name: Collect diagnostics and outputs
-        if: always()
+      - name: Verify Lua syntax
         run: |
-          set +e
-          mkdir -p deobf_debug deobf_output
+          /tmp/luadec/lua-5.1/src/luac -p deobf_output/deobfuscated.lua
           {
-            echo '=== Environment ==='
-            dotnet --info 2>&1
-            echo '=== Input ==='
-            ls -lh 3Rnd9rHf.txt 2>&1
-            echo '=== Outputs ==='
-            find deobf_output -maxdepth 1 -type f -printf '%f %s bytes\n' 2>&1
-            echo '=== Workspace status ==='
-            git status --short 2>&1
-          } > deobf_debug/00_summary.log 2>&1
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add deobf_debug deobf_output
-          git commit -m 'tmp: save deobfuscation diagnostics and outputs' || true
-          git push || true
+            echo "=== luac -v ==="
+            /tmp/luadec/lua-5.1/src/luac -v
+            echo "=== luac -p ==="
+            /tmp/luadec/lua-5.1/src/luac -p deobf_output/deobfuscated.lua
+          } > deobf_debug/05_syntax.log
+
+      - name: Commit results
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add deobf_output deobf_debug
+          git commit -m "tmp: verified MoonSec decompilation" || true
+          git push
